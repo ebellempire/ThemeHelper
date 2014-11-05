@@ -96,10 +96,16 @@ class ThemeHelperPlugin extends Omeka_Plugin_AbstractPlugin
     }	
 }
 
-function syntax_highlighting($option=null,$class=null,$escape=false,$label=null){
+function syntax_highlighting($option=null,$class=null,$escape=false){
 	
 	$userCode = get_option($option);
 	
-	return '<div class="highlight-container"><pre><code '.($class ? 'class="'.$class.'"' : null).'>'.($escape ? htmlspecialchars($userCode,ENT_QUOTES) : $userCode).'</code></pre>'.($label ? '<span class="highlight-label">'.$label.'</span>' : null).'</div>';
+	$html  = '<div class="highlight-container">';
+	$html .= '<pre><code '.($class ? 'class="'.$class.'"' : null).'>';
+	$html .= ($escape ? htmlspecialchars($userCode,ENT_QUOTES) : $userCode);
+	$html .= '</code></pre>';
+	$html .= '</div>';
+	
+	return $html;
 	
 }
