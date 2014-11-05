@@ -1,4 +1,7 @@
 <style>
+	.highlight-container code{
+		resize: horizontal;
+	}
 	.highlight-container,.input-block{
 		display: block;
 		clear: both;
