@@ -116,9 +116,9 @@
 	  return text.replace(/[&<>"']/g, function(m) { return map[m]; });
 	}
 	
-	function th_highlight(){
+	function th_highlight(selector='pre code'){
 		
-		jQuery('pre code').each(function(i, block) {
+		jQuery(selector).each(function(i, block) {
 			hljs.highlightBlock(block);
 		});	
 		
@@ -139,12 +139,17 @@
 			}
 			
 			jQuery(this).keyup(function(){
-				
+									
 				// if the user is entering text, show the code container
 				jQuery(this).next().removeClass('hidden');
 				
+				var code_selector=jQuery(this).next().find('pre code');
+				
 				// mirror the user input from the textarea in the code container
-			    jQuery(this).next().find('pre code').html(th_escape(this.value));
+			    jQuery(code_selector).html(th_escape(this.value));
+
+				// refresh the syntax highlighting
+				th_highlight(code_selector);
 				
 				}).blur(function(){
 					
@@ -152,15 +157,10 @@
 					if(jQuery(this).val().length == 0){
 						jQuery(this).next().addClass('hidden');
 					}	
-						
-					// refres the syntax highlighting each time the user leaves a textarea			
-					th_highlight();
 					
 				});
 			});	
 		
-		// refresh the syntax highlighting once per second
-		setInterval(function(){th_highlight();}, 1000);
 		
 		});	
 		
