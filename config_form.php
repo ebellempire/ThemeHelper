@@ -128,43 +128,43 @@
 	}
 	
 	jQuery(document).ready(function() {
-	  
-		// run the syntax highlighting script
-		th_highlight();
 	
-		jQuery('textarea').each(function(){
-			
-			if(jQuery(this).val().length == 0){
-				
-				// hide empty code containers
-				jQuery(this).next().addClass('hidden');
-			
-			}
-			
-			jQuery(this).keyup(function(){
-									
-				// if the user is entering text, show the code container
-				jQuery(this).next().removeClass('hidden');
-				
-				var code_selector=jQuery(this).next().find('pre code');
-				
-				// mirror the user input from the textarea in the code container
-			    jQuery(code_selector).html(th_escape(this.value));
-
-				// refresh the syntax highlighting
-				th_highlight(code_selector);
-				
-				}).blur(function(){
-					
-					// if the user mouses away and the textarea is empty, re-hide the code container
-					if(jQuery(this).val().length == 0){
-						jQuery(this).next().addClass('hidden');
-					}	
-					
-				});
-			});	
+	// run the syntax highlighting script
+	th_highlight();
+	
+	jQuery('textarea').each(function(){
 		
+		if(jQuery(this).val().length == 0){
+			
+			// hide empty code containers
+			jQuery(this).next().addClass('hidden');
 		
+		}
+		
+		jQuery(this).keyup(function(){
+								
+			// if the user is entering text, show the code container
+			jQuery(this).next().removeClass('hidden');
+			
+			var code_selector=jQuery(this).next().find('pre code');
+			
+			// mirror the user input from the textarea in the code container
+		    jQuery(code_selector).html(th_escape(this.value));
+	
+			// refresh the syntax highlighting
+			th_highlight(code_selector);
+			
+			}).blur(function(){
+				
+				// if the user mouses away and the textarea is empty, re-hide the code container
+				if(jQuery(this).val().length == 0){
+					jQuery(this).next().addClass('hidden');
+				}	
+				
+			});
 		});	
+	
+	
+	});	
 		
 </script>                                       

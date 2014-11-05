@@ -1,5 +1,4 @@
 <?php
-
 class ThemeHelperPlugin extends Omeka_Plugin_AbstractPlugin
 {
     
@@ -37,6 +36,7 @@ class ThemeHelperPlugin extends Omeka_Plugin_AbstractPlugin
         
     public function hookConfig()
     {
+	    
         set_option('th_footer_js', $_POST['th_footer_js']);
         set_option('th_footer_html', $_POST['th_footer_html']);
         set_option('th_header_css', $_POST['th_header_css']);
@@ -49,8 +49,10 @@ class ThemeHelperPlugin extends Omeka_Plugin_AbstractPlugin
 	*/
 	
 	public function hookAdminHead(){
+		
 		queue_js_file('highlight/highlight.pack');
 		queue_css_file('highlight/monokai_sublime');
+	
 	}
 	
 
