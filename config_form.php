@@ -47,10 +47,29 @@
 	</div>
 	
 	
+	<h3><?php echo __('HTML'); ?></h3>
+	
+	<div class="th_footer_html">
+	    <div class="seven columns alpha">
+	        <label for="th_footer_html"><?php echo __('Footer HTML'); ?></label>
+	    </div>
+	
+	    <div class="inputs seven columns alpha">
+	        <p class="explanation"><?php echo __("Custom HTML is appended to the theme footer."); ?></p>
+	
+	        <div class="input-block">
+	            <textarea placeholder="<?php echo __('<div class=&quot;example&quot;></div>');?>" rows="4" class="textinput" name="th_footer_html"><?php echo get_option('th_footer_html'); ?></textarea>
+				<?php echo syntax_highlighting('th_footer_html','html',true);?>
+	        </div>
+	        
+	    </div>
+	</div>
+
+
+
 	
 	<h3><?php echo __('JavaScript'); ?></h3>
-	
-	
+		
 	<div class="th_header_js">
 	    <div class="seven columns alpha">
 	        <label for="th_header_js"><?php echo __('External Scripts'); ?></label>
@@ -83,25 +102,7 @@
 	        
 	    </div>
 	</div>
-	
-	
-	<h3><?php echo __('HTML'); ?></h3>
-	
-	<div class="th_footer_html">
-	    <div class="seven columns alpha">
-	        <label for="th_footer_html"><?php echo __('Footer HTML'); ?></label>
-	    </div>
-	
-	    <div class="inputs seven columns alpha">
-	        <p class="explanation"><?php echo __("Custom HTML is appended to the theme footer."); ?></p>
-	
-	        <div class="input-block">
-	            <textarea placeholder="<?php echo __('<div class=&quot;example&quot;></div>');?>" rows="4" class="textinput" name="th_footer_html"><?php echo get_option('th_footer_html'); ?></textarea>
-				<?php echo syntax_highlighting('th_footer_html','html',true);?>
-	        </div>
-	        
-	    </div>
-	</div>
+
 
 </fieldset>
         
