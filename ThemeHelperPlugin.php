@@ -2,8 +2,6 @@
 class ThemeHelperPlugin extends Omeka_Plugin_AbstractPlugin
 {
     
-
-
     protected $_hooks = array(
     	'install', 
     	'uninstall',
@@ -36,10 +34,23 @@ class ThemeHelperPlugin extends Omeka_Plugin_AbstractPlugin
         
     public function hookConfig()
     {
+        require_once dirname(__FILE__) . '/libraries/CSSTidy/class.csstidy.php';
+
+        $config = HTMLPurifier_Config::createDefault();
+        $config->set('Filter.ExtractStyleBlocks', TRUE);
+        $config->set('CSS.AllowImportant', TRUE);
+        $config->set('CSS.AllowTricky', TRUE);
+        $config->set('CSS.Proprietary', TRUE);
+        $config->set('CSS.Trusted', TRUE);
+
+        $purifier = new HTMLPurifier($config);
+        
+        $footer_html= $purifier->purify($_POST['th_footer_html']);
+        $header_css	= $purifier->purify($_POST['th_header_css']);
 	    
+        set_option('th_footer_html', $footer_html);
+        set_option('th_header_css', $header_css);
         set_option('th_footer_js', $_POST['th_footer_js']);
-        set_option('th_footer_html', $_POST['th_footer_html']);
-        set_option('th_header_css', $_POST['th_header_css']);
         set_option('th_header_js', $_POST['th_header_js']);
     }	
     
